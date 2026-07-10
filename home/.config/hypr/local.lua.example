@@ -1,0 +1,56 @@
+-- Machine-local Hyprland config template.
+--
+-- Copy this file to ~/.config/hypr/local.lua (NOT into the dotfiles/stow repo)
+-- and edit it for the current machine. It is loaded automatically by
+-- hyprland.lua via require("local") if it exists.
+--
+-- cp ~/.dotfiles/home/.config/hypr/local.lua.example ~/.config/hypr/local.lua
+
+------------------
+---- MONITORS ----
+------------------
+
+hl.monitor({
+    output   = "",
+    mode     = "preferred",
+    position = "auto",
+    scale    = "auto",
+})
+
+-------------------
+---- AUTOSTART ----
+-------------------
+
+hl.on("hyprland.start", function()
+    -- hl.exec_cmd("swaybg -i /path/to/wallpaper.jpg &")
+end)
+
+---------------
+---- INPUT ----
+---------------
+
+hl.config({
+    input = {
+        touchpad = {
+            natural_scroll = false, -- set true for laptops that want inverted/"natural" scroll
+            scroll_factor  = 1.0,
+        },
+    },
+})
+
+-- hl.gesture({
+--     fingers   = 3,
+--     direction = "horizontal",
+--     action    = "workspace",
+-- })
+
+-- hl.device({
+--     name        = "some-device-name",
+--     sensitivity = 0,
+-- })
+
+---------------------
+---- LOCAL BINDS ----
+---------------------
+
+-- hl.bind("SUPER_CTRL + mouse:272", hl.dsp.window.resize(), { mouse = true })

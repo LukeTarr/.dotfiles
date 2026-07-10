@@ -38,7 +38,7 @@
 
 -- See https://wiki.hyprland.org/Configuring/Monitors/
 
--- Machine-specific monitor config lives in local.conf
+-- Machine-specific monitor config lives in local.lua
 
 --##################
 
@@ -157,37 +157,7 @@ local mainMod = "SUPER"
 
 -- Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 
-hl.config({
-    input = {
-        kb_layout  = "us",
-        kb_variant = "",
-        kb_model   = "",
-        kb_options = "",
-        kb_rules   = "",
-
-        follow_mouse = 1,
-
-        sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
-
-        touchpad = {
-            natural_scroll = false,
-        },
-    },
-})
-
-hl.gesture({
-    fingers = 3,
-    direction = "horizontal",
-    action = "workspace"
-})
-
--- Example per-device config
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
-hl.device({
-    name        = "epic-mouse-v1",
-    sensitivity = -0.5,
-})
-
+-- Input, gestures, and device config are machine-specific — see local.lua
 
 ---------------------
 ---- KEYBINDINGS ----
@@ -247,14 +217,25 @@ hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
 -- Autostart
+-- swaybg wallpaper is set in local.lua
 hl.on("hyprland.start", function()
     hl.exec_cmd("waybar&")
     hl.exec_cmd("clipse -listen&")
     hl.exec_cmd("mako &")
-    hl.exec_cmd("swaybg -i /home/luke/Pictures/wps/pinkbluesky.jpg&")
     hl.exec_cmd("nm-applet --indicator &")
     hl.exec_cmd("bash -c mkfifo /tmp/local_var_HYPRLAND_INSTANCE_SIGNATURE.wob && tail -f /tmp/local_var_HYPRLAND_INSTANCE_SIGNATURE.wob | wob & disown &")
     hl.exec_cmd("systemctl --user import-environment &")
     hl.exec_cmd("hash dbus-update-activation-environment 2>/dev/null &")
     hl.exec_cmd("dbus-update-activation-environment --systemd &")
 end)
+
+---------------------------
+---- MACHINE-LOCAL CFG ----
+---------------------------
+
+-- Loads ~/.config/hypr/local.lua (NOT tracked in dotfiles).
+-- Put per-machine monitor, input, gesture, device, and autostart config there.
+-- See ~/.config/hypr/local.lua.example in this repo for a starting point.
+if io.open(os.getenv("HOME") .. "/.config/hypr/local.lua", "r") then
+    require("local")
+end
