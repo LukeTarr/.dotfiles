@@ -8,11 +8,18 @@ if status is-interactive
     #oxidize
     alias cd="z"
     alias ls="eza -lah"
-    alias cat="bat"
+    if command -q bat
+        alias cat="bat"
+    else if command -q batcat
+        alias cat="batcat"
+    end
     alias grep="rg"
 
-    #invoke local script to set up env vars, and platform specific aliases
-    source ~/.config/fish/local.fish
+    # Invoke a local script for environment variables and platform-specific aliases.
+    # local.fish is intentionally not tracked, so only load it when it exists.
+    if test -f ~/.config/fish/local.fish
+        source ~/.config/fish/local.fish
+    end
 
 
     function fish_greeting

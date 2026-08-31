@@ -1,0 +1,6 @@
+# Copy this file to local.fish for settings that belong only on this machine.
+# Keep secrets and machine-specific paths out of the tracked config.
+#
+# Example:
+# set -gx EDITOR code
+# alias open-explorer='explorer.exe .'
