@@ -8,7 +8,7 @@
     // Choose the order of the modules
     "modules-left": [
         "custom/power",
-        "hyprland/workspaces",
+        "ext/workspaces",
         "hyprland/submap",
         "temperature",
         "backlight"
@@ -36,6 +36,9 @@
     },
     "hyprland/submap": {
         "format": "<span style=\"italic\">{}</span>"
+    },
+    "ext/workspaces": {
+        "on-click": "activate"
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
@@ -109,7 +112,7 @@
         "tooltip": false
     },
     "memory": {
-        "format": " {}% "
+        "format": " {}% 󰍛"
     },
     "power-profiles-daemon": {
         "format": "{icon}",
