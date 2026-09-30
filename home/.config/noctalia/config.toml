@@ -1,0 +1,87 @@
+# Noctalia v5 loads root *.toml files alphabetically, then GUI state overrides.
+# Optional local.toml loads after this file; keep it outside the Stow repo.
+# See local.toml.example for machine-specific paths and private settings.
+
+# A compact macOS-style menu bar and floating app dock for niri.
+[bar]
+order = ["main"]
+
+[bar.main]
+enabled = true
+position = "top"
+thickness = 34
+margin_ends = 0
+margin_edge = 0
+radius = 0
+background_opacity = 0.92
+reserve_space = true
+start = ["launcher", "workspaces"]
+center = ["clock"]
+end = ["screenshot", "cpu-temp", "cpu-usage", "ram-usage", "tray", "network", "volume", "battery", "control-center", "session"]
+
+[widget.launcher]
+glyph = "search"
+
+[widget.cpu-temp]
+type = "sysmon"
+stat = "cpu_temp"
+visualization = "none"
+
+[widget.cpu-usage]
+type = "sysmon"
+stat = "cpu_usage"
+visualization = "none"
+
+[widget.ram-usage]
+type = "sysmon"
+stat = "ram_pct"
+visualization = "none"
+
+[dock]
+enabled = true
+position = "bottom"
+icon_size = 48
+margin_edge = 10
+radius = 20
+background_opacity = 0.88
+show_running = true
+show_dots = true
+magnification = true
+magnification_scale = 1.45
+auto_hide = true
+reserve_space = false
+pinned = ["dev.noctalia.Noctalia", "com.mitchellh.ghostty", "dev.zed.Zed", "org.gnome.Nautilus", "org.gnome.Software", "com.brave.Browser", "com.spotify.Client"]
+
+[theme]
+mode = "dark"
+source = "custom"
+custom_palette = "GitHub-Dark-Dimmed"
+
+[system.monitor]
+enabled = true
+
+[widget.screenshot]
+type           = "custom_button"
+glyph          = "camera"
+tooltip        = "Screenshot (left: region · right: full screen · middle: annotate)"
+
+[widget.screenshot.actions]
+left   = "screenshot-region"
+right  = "screenshot-fullscreen"
+middle = "screenshot-annotate"
+
+# Portable preferences also selected in the Settings UI.
+
+[shell.launcher]
+categories = false
+compact = true
+
+[shell.panel]
+control_center_position = "center"
+open_near_click_control_center = true
+
+[widget.workspaces]
+style = "minimal"
+
+[wallpaper]
+fill_mode = "stretch"

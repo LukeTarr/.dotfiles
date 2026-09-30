@@ -1,0 +1,13 @@
+// Copy to ~/.config/niri/local.kdl; edit for this computer.
+// The shared config includes local.kdl optionally and loads it last.
+// Keep private environment values, device names, monitor layout, and
+// system-specific startup commands here. Requires niri 26.04+.
+//
+// Examples (commented out):
+// output "eDP-1" { scale 1.5; }
+// input { touchpad { tap; natural-scroll; } }
+// spawn-at-startup "pipewire"
+// environment { MY_LOCAL_SETTING "replace-me"; }
+// binds {
+//     Mod+Alt+Equal { spawn "brightnessctl" "--device=your-keyboard-backlight" "set" "+10%"; }
+// }

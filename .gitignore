@@ -1,0 +1,12 @@
+# Private and machine-specific overrides belong in the real ~/.config dirs.
+/home/.config/fish/local.fish
+/home/.config/hypr/local.lua
+/home/.config/niri/local.kdl
+/home/.config/noctalia/local.toml
+
+# Never publish old config snapshots or Fish's machine-local variable store.
+*.bak
+*.bak-*
+*.pre-stow
+*.pre-stow-*
+/home/.config/fish/fish_variables

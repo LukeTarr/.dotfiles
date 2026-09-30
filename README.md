@@ -73,14 +73,48 @@ into the repository and can overwrite the repository's versions.
 ## Machine-local configuration
 
 Files that contain secrets or settings specific to one computer should not be
-committed. Copy the provided examples and edit the copies:
+committed. Create missing local files from the examples and edit the copies
+(`cp -n` preserves existing files):
 
 ```bash
-cp ~/.config/fish/local.fish.example ~/.config/fish/local.fish
-cp ~/.config/hypr/local.lua.example ~/.config/hypr/local.lua
+cp -n ~/.config/fish/local.fish.example ~/.config/fish/local.fish
+cp -n ~/.config/hypr/local.lua.example ~/.config/hypr/local.lua
+cp -n ~/.config/niri/local.kdl.example ~/.config/niri/local.kdl
+cp -n ~/.config/noctalia/local.toml.example ~/.config/noctalia/local.toml
 ```
 
 The main Fish and Hyprland configs load these files only when they exist.
+Niri (26.04 or newer) includes `local.kdl` optionally at the end of
+`config.kdl`, so local settings override shared settings. Put monitor layout,
+input-device tuning, hardware-specific keybindings, private environment values,
+and distribution-specific startup commands there. See the
+[niri include documentation](https://niri-wm.github.io/niri/Configuration:-Include.html).
+
+Noctalia v5 automatically loads root `*.toml` files alphabetically.
+`config.toml` contains shared settings; optional `local.toml` loads afterwards
+and overrides them. This uses Noctalia's native config loader; no startup
+wrapper is needed. Keep this naming order and automatic loading enabled.
+Put local icon paths, wallpaper paths, output-specific settings, location,
+account details, and private commands in `local.toml`.
+
+Noctalia's GUI overrides in `~/.local/state/noctalia/settings.toml` load last
+and can override both files. That file and the rest of Noctalia's runtime
+state (including clipboard and notification history) stay local. To share a
+future GUI change, review it and copy only the portable settings into
+`config.toml`; do not blindly commit a full export. Custom color palettes
+under `home/.config/noctalia/palettes/` are shared. See the
+[Noctalia configuration documentation](https://docs.noctalia.dev/noctalia/configuration/).
+
+Local overrides and config backups are also excluded by `.gitignore` as a
+precaution. Keep using `--no-folding` so real local files stay outside the
+repository. Back up local files separately if you need to restore them later.
+
+Validate changes before committing:
+
+```bash
+niri validate
+noctalia config validate
+```
 
 ## Editing and saving changes
 

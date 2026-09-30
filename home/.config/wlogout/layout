@@ -1,36 +1,30 @@
 {
-    "label" : "lock",
-    "action" : "swaylock",
-    "text" : "Lock",
-    "keybind" : "l"
+    "label": "lock",
+    "action": "noctalia msg session lock",
+    "text": "Lock",
+    "keybind": "l"
 }
 {
-    "label" : "hibernate",
-    "action" : "systemctl hibernate",
-    "text" : "Hibernate",
-    "keybind" : "h"
+    "label": "logout",
+    "action": "noctalia msg session logout",
+    "text": "Log out",
+    "keybind": "e"
 }
 {
-    "label" : "logout",
-    "action" : "hyprctl dispatch exit",
-    "text" : "Logout",
-    "keybind" : "e"
+    "label": "suspend",
+    "action": "noctalia msg session lock-and-suspend",
+    "text": "Suspend",
+    "keybind": "u"
 }
 {
-    "label" : "shutdown",
-    "action" : "systemctl poweroff",
-    "text" : "Shutdown",
-    "keybind" : "s"
+    "label": "reboot",
+    "action": "noctalia msg session reboot",
+    "text": "Reboot",
+    "keybind": "r"
 }
 {
-    "label" : "suspend",
-    "action" : "systemctl suspend",
-    "text" : "Suspend",
-    "keybind" : "u"
-}
-{
-    "label" : "reboot",
-    "action" : "systemctl reboot",
-    "text" : "Reboot",
-    "keybind" : "r"
+    "label": "shutdown",
+    "action": "noctalia msg session shutdown",
+    "text": "Shut down",
+    "keybind": "s"
 }

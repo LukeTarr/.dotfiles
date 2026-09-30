@@ -1,0 +1,17 @@
+# Copy to ~/.config/noctalia/local.toml; edit for this computer.
+# Noctalia v5 automatically loads root *.toml files alphabetically:
+# config.toml first, local.toml afterwards. Missing local.toml is fine.
+# GUI overrides in ~/.local/state/noctalia/settings.toml load last.
+# Keep wallpaper paths, output names, local icons, location/account settings,
+# and private commands here. Never commit credentials.
+#
+# Examples (commented out):
+# [widget.launcher]
+# custom_image = "/path/to/local-icon.png"
+# custom_image_colorize = false
+#
+# [wallpaper.default]
+# path = "~/Pictures/Wallpapers/local-wallpaper.png"
+#
+# [brightness.monitor.eDP-1]
+# backend = "sysfs"
