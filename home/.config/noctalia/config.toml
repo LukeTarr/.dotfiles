@@ -57,6 +57,11 @@ mode = "dark"
 source = "custom"
 custom_palette = "GitHub-Dark-Dimmed"
 
+# Skip the first-run wizard on new machines; it saves a built-in palette
+# to settings.toml, which overrides the theme above.
+[shell]
+setup_wizard_enabled = false
+
 [system.monitor]
 enabled = true
 
