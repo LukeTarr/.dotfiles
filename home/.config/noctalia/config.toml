@@ -22,6 +22,10 @@ end = ["screenshot", "cpu-temp", "cpu-usage", "ram-usage", "tray", "network", "v
 [widget.launcher]
 glyph = "search"
 
+# 12-hour clock with AM/PM.
+[widget.clock]
+format = "{:%I:%M %p}"
+
 [widget.cpu-temp]
 type = "sysmon"
 stat = "cpu_temp"
